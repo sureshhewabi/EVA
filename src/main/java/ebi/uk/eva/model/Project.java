@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 /**
  * 
@@ -12,16 +13,15 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "project")
-public class Project implements java.io.Serializable  {
-
-	private static final long serialVersionUID = -2743647582252587100L;
+@Table(name = "projects")
+public class Project {
 
 	@Id	
 	@Column(name = "project_id", unique = true, nullable = false)
 	private String id;
 
 	@Column(name = "title")
+	@NotNull
 	private String title;
 
 	@Column(name = "description")
