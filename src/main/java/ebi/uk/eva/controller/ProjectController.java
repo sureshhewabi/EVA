@@ -21,7 +21,7 @@ import ebi.uk.eva.service.ProjectService;
  *
  */
 @RestController
-@RequestMapping("/projects")
+@RequestMapping("/studies")
 public class ProjectController {
 
 	@Autowired

@@ -10,6 +10,6 @@ export class ProjectService {
   }
 
   getProjectList() {
-    return this.httpClient.get(AppSettings.API_ENDPOINT + '/projects', null).map(res => res.json());
+    return this.httpClient.get(AppSettings.API_ENDPOINT + '/studies', null).map(res => res.json());
   }
 }
