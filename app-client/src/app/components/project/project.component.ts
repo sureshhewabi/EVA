@@ -4,6 +4,7 @@ import { Subject } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import {ProjectService} from '../../services/project.service';
 import {Project} from '../../models/project.model';
+import {AppSettings} from "../../app.config";
 
 @Component({
   selector: 'app-project',
@@ -36,5 +37,9 @@ export class ProjectComponent implements OnInit {
         // Calling the DT trigger to manually render the table
         this.dtTrigger.next();
       });
+  }
+
+  truncate(title: string, ellipsis=' ...'){
+    return `${title.replace(AppSettings.SHORTEN_TITLE_REGX, '$1')}${ellipsis}`;
   }
 }
