@@ -2,6 +2,9 @@ package ebi.uk.eva.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import ebi.uk.eva.model.Taxonomy;;
 
 /**
@@ -38,6 +41,7 @@ public class Project {
 
 	@ManyToOne
     @JoinColumn(name = "taxonomy_id")
+	@JsonBackReference
     private Taxonomy taxonomy;
 
 	public Project() {

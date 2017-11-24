@@ -27,7 +27,7 @@ public class Taxonomy {
 	@NotNull
 	private String scientificName;
 
-	@OneToMany(mappedBy = "taxonomy", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "taxonomy")
 	private List<Project> projects = new ArrayList<>();
 	 
 	public Taxonomy() {
