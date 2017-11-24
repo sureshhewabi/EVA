@@ -20,6 +20,8 @@ public class Project {
 	@NotNull
 	private String title;
 
+	@ManyToOne
+    @JoinColumn(name = "taxonomy_id")
     private Taxonomy taxonomy;
 
 	public Project() {
@@ -42,8 +44,6 @@ public class Project {
 		this.title = title;
 	}
 
-	@ManyToOne
-    @JoinColumn(name = "taxonomy_id")
 	public Taxonomy getTaxonomy() {
 		return taxonomy;
 	}

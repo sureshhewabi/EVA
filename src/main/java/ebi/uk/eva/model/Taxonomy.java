@@ -22,6 +22,7 @@ public class Taxonomy {
 	@NotNull
 	private String commonName;
 
+	@OneToMany(mappedBy = "taxonomy", cascade = CascadeType.ALL)
 	private List<Project> projects = new ArrayList<>();
 	 
 	public Taxonomy() {
@@ -44,7 +45,7 @@ public class Taxonomy {
 		this.commonName = commonName;
 	}
 
-	@OneToMany(mappedBy = "taxonomy", cascade = CascadeType.ALL)
+	
 	public List<Project> getProjects() {
 		return projects;
 	}
