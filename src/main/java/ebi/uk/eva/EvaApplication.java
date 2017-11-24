@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @SpringBootApplication
 public class EvaApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EvaApplication.class, args);
 	}
@@ -23,7 +23,8 @@ public class EvaApplication {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/projects").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/studies").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/taxonomies").allowedOrigins("http://localhost:4200");
             }
         };
     }

@@ -25,15 +25,14 @@ export class ProjectComponent implements OnInit {
   }
 
   loadProjects(){
-
     this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 2
+      pageLength: 5
     };
-    console.log('*************************************');
     this.projectService.getProjectList()
       .subscribe(projects => {
         this.projects = projects;
+        console.log(this.projects);
         // Calling the DT trigger to manually render the table
         this.dtTrigger.next();
       });
