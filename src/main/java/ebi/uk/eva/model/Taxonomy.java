@@ -1,9 +1,8 @@
 package ebi.uk.eva.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -13,30 +12,20 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
-@Table(name = "taxonomies")
 public class Taxonomy {
 
 	@Id	
-	@Column(name = "taxonomy_id", unique = true, nullable = false)
+	@Column(name = "id", unique = true, nullable = false)
 	private long id;
 
 	@Column(name = "taxonomy_common_name")
 	@NotNull
 	private String commonName;
-	
-	@Column(name = "taxonomy_scientific_name")
-	@NotNull
-	private String scientificName;
 
+	private List<Project> projects = new ArrayList<>();
+	 
 	public Taxonomy() {
 
-	}
-
-	public Taxonomy(long id, String commonName, String scientificName) {
-		super();
-		this.id = id;
-		this.commonName = commonName;
-		this.scientificName = scientificName;
 	}
 
 	public long getId() {
@@ -55,13 +44,28 @@ public class Taxonomy {
 		this.commonName = commonName;
 	}
 
-	public String getScientificName() {
-		return scientificName;
+	@OneToMany(mappedBy = "taxonomy", cascade = CascadeType.ALL)
+	public List<Project> getProjects() {
+		return projects;
 	}
 
-	public void setScientificName(String scientificName) {
-		this.scientificName = scientificName;
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
 	}
 	
-	
+	 @Override
+	    public String toString() {
+	        String result = String.format(
+	                "Taxonomy[id=%d, commonName='%s']%n",
+	                id, commonName);
+	        if (projects != null) {
+	            for(Project project : projects) {
+	                result += String.format(
+	                        "project[id=%s, title='%s']%n",
+	                        project.getId(), project.getTitle());
+	            }
+	        }
+
+	        return result;
+	    }
 }

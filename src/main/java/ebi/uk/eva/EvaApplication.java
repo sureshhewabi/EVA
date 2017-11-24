@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @SpringBootApplication
 public class EvaApplication {
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(EvaApplication.class, args);
 	}
