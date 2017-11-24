@@ -12,21 +12,34 @@ import javax.validation.constraints.NotNull;
  */
 
 @Entity
+@Table(name="taxonomies")
 public class Taxonomy {
 
 	@Id	
-	@Column(name = "id", unique = true, nullable = false)
+	@Column(name = "taxonomy_id", unique = true, nullable = false)
 	private long id;
 
 	@Column(name = "taxonomy_common_name")
 	@NotNull
 	private String commonName;
+	
+	@Column(name = "taxonomy_scientific_name")
+	@NotNull
+	private String scientificName;
 
 	@OneToMany(mappedBy = "taxonomy", cascade = CascadeType.ALL)
 	private List<Project> projects = new ArrayList<>();
 	 
 	public Taxonomy() {
 
+	}
+	
+	public Taxonomy(long id, String commonName, String scientificName, List<Project> projects) {
+		super();
+		this.id = id;
+		this.commonName = commonName;
+		this.scientificName = scientificName;
+		this.projects = projects;
 	}
 
 	public long getId() {
@@ -45,7 +58,14 @@ public class Taxonomy {
 		this.commonName = commonName;
 	}
 
-	
+	public String getScientificName() {
+		return scientificName;
+	}
+
+	public void setScientificName(String scientificName) {
+		this.scientificName = scientificName;
+	}
+
 	public List<Project> getProjects() {
 		return projects;
 	}

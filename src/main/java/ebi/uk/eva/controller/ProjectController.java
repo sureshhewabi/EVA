@@ -27,12 +27,12 @@ public class ProjectController {
 	private ProjectService projectService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Project>> getAllProjects() {
-		List<Project> projects = projectService.getAllProjects();
-		if (projects.isEmpty()) {
-			return new ResponseEntity<List<Project>>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<List<Project>>(projects, HttpStatus.OK); 
+	public List<Project> getAllProjects() {
+		return projectService.getAllProjects();
+//		if (projects.isEmpty()) {
+//			return new ResponseEntity<List<Project>>(HttpStatus.NO_CONTENT);
+//		}
+//		return new ResponseEntity<List<Project>>(projects, HttpStatus.OK); 
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
